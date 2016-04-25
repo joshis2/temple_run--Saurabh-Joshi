@@ -29,6 +29,8 @@
   <strong>Goal:</strong> You should have a small prototype by the end of this milestone.
   <ul>
     <li>first task : who is doing it (if in team)</li>
+<li> Have the person running and jumping on the screen</li> 
+<li> Have moving back ground ready </li>
   </ul>
 </p>
 
@@ -38,5 +40,6 @@
   <strong>Goal:</strong> You should have iterated and improved on your prototype by the end of this milestone.
   <ul>
     <li>first task : who is doing it (if in team)</li>
+<li> Running the project ensuring it works with the collisions without any problems </li> 
   </ul>
 </div>
