@@ -6,6 +6,15 @@ class Sprite
   int _h;
   int dirX;
   PImage img;
+  PVector position;
+PVector velocity;
+float jumpSpeed;
+
+
+float up;
+float down;
+float gravity = .5;
+float ground = 700;
 
   Sprite()
   {
@@ -15,6 +24,7 @@ class Sprite
     _h = 0;
     img = null;
     dirX =0;
+    
   }
 
   public void SetImage(String fileName)
@@ -23,13 +33,12 @@ class Sprite
     _w = img.width;
     _h = img.height;
   }
-  
   public void SetImage(String fileName, int w, int h)
   {
     img = loadImage(fileName);
     _w = w;
     _h = h;
-    img.resize(_w,_h);
+    img.resize(_w, _h);
   }
 
   public void Origin(int dirX, int dirY) 
@@ -39,6 +48,6 @@ class Sprite
 
   void Draw()
   {
-    image(img, _x, _y, _w, _h);
+  //  image(img, _x, _y, _w, _h);
   }
 }
