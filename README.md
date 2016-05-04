@@ -5,10 +5,6 @@
 <strong>Description</strong>: This will be an interactive game where I will use the maki maki to remake the game temple run. I will use the maki maki by making places where players have to stand in order for the person on the screen to jump or duck avoiding obstacles.
 
 <h2>Timeline</h2>
-<li> I will complete the sprite and the moving background by the 2nd of May.</li>
-<li> I will work on the collisions till the 5th of may.</li>
-<li> I will have the final test on the 7th of may.</li>
-<li> I will submit the project on the 11th of may.</li>
 
 
 <div>
