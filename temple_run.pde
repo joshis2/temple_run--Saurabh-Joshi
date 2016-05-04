@@ -1,8 +1,13 @@
+// to move the image back you must make the x point of image 1 to be no less than the negative value of the width of image one. ie at -501 must comeback cannot be greater than -500. 
+
 Sprite Dude;
 
 PImage a;
 PImage b;
 float x;
+float y;
+float x2;
+float y2;
 PVector position;
 PVector velocity;
 float jumpSpeed;
@@ -18,20 +23,23 @@ void setup()
   size(500,500);
   Dude = new Sprite();
   Dude.SetImage("guy_dangerous.jpg", 100, 100);
-  //Dude.Origin(100,100);
-  a = loadImage("road1.jpg");
-  b = loadImage("road2.jpg");
   Dude.position = new PVector(400, ground);
   Dude.velocity = new PVector(0, 0);
   Dude.jumpSpeed = 10;
+  a = loadImage("road1.jpg");
+  background(0); 
+  b = loadImage("road1.jpg");
 }
 
 
 void draw()
 {
+  background(0); 
   image(a, x, 0, 500, 500);
-  image(b, x, 0,500, 500);
+  image(b, x2, 0,500, 500);
   x-=1;
+  x2 = x+width;
+  
   Dude.Draw();
   updateDude();
 }
