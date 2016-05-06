@@ -20,15 +20,16 @@ float ground = 400;
 
 void setup()
 {
-  size(500,500);
+  size(500,500, P3D);
   Dude = new Sprite();
   Dude.SetImage("guy_dangerous.jpg", 100, 100);
   Dude.position = new PVector(400, ground);
   Dude.velocity = new PVector(0, 0);
   Dude.jumpSpeed = 10;
-  a = loadImage("road1.jpg");
-  background(0); 
+  a = loadImage("road1.jpg"); 
   b = loadImage("road1.jpg");
+  x=0;
+  x2=width;
 }
 
 
@@ -38,7 +39,17 @@ void draw()
   image(a, x, 0, 500, 500);
   image(b, x2, 0,500, 500);
   x-=1;
-  x2 = x+width;
+  x2-=1;
+  
+  if (x<-width)
+  {
+    x=width;
+  }
+  
+  if (x2<-width)
+  {
+    x2=width;
+  }
   
   Dude.Draw();
   updateDude();
