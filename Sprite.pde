@@ -44,8 +44,4 @@ class Sprite
   { 
     _dirX = dirX;
   }
-
-  void Draw()
-  {
-  }
 }

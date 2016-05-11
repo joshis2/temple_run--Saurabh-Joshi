@@ -22,6 +22,7 @@ float ground = 400;
 float XPos1 = 450;
 float YPos1 = 450;
 float speed = 3;
+
 void setup()
 {
   size(500, 500, P3D);
@@ -34,7 +35,6 @@ void setup()
   b = loadImage("road1.jpg");
   x=0;
   x2=width;
-  
 }
 
 
@@ -57,25 +57,24 @@ void draw()
     {
       x2=width;
     }
+
     rect(XPos1, YPos1, 55, 55);
-    Dude.Draw();
-    updateDude();
-
-
-
-     XPos1 += -speed;
+    XPos1 += -speed;
     if (XPos1 < 0)
     {
-     XPos1 = width;
-     speed += 1;
+      XPos1 = width;
+      speed += 1;
     }
+    updateDude();
     CheckCollisions();
-    
   } else
   {
     background(0);
+    textSize(32);
+    textAlign(CENTER);
+    text("Game Over", 250, 250);
   }
-}
+} 
 
 void updateDude()
 {
@@ -137,13 +136,11 @@ void keyReleased()
 
 void CheckCollisions()
 {
-  //Check collisions with Sprite
   if (Dude.position.x < XPos1 + 55 &&
     Dude.position.x + 100 > XPos1 &&
     Dude.position.y < YPos1 + 55 &&
     Dude.position.y + 100 > YPos1)
   {
     isRunning=false;
-    println("LOOLOLOL");
   }
 }
