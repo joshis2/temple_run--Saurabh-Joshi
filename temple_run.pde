@@ -1,8 +1,11 @@
 // to move the image back you must make the x point of image 1 to be no less than the negative value of the width of image one. ie at -501 must comeback cannot be greater than -500. 
 
 Sprite Dude;
+int stateOfGame;
 
 boolean isRunning = true;
+boolean buttonPressed;
+int buttonX, buttonY, buttonW, buttonH;
 PImage a;
 PImage b;
 float x;
@@ -26,6 +29,13 @@ float speed = 3;
 void setup()
 {
   size(500, 500, P3D);
+  buttonPressed = false;
+  buttonW = 335;
+  buttonH = 100;
+  textSize(buttonH);
+  buttonX = (width-buttonW)/2;
+  buttonY = (height-buttonH)/2;
+
   Dude = new Sprite();
   Dude.SetImage("guy_dangerous.jpg", 100, 100);
   Dude.position = new PVector(200, ground);
@@ -40,41 +50,65 @@ void setup()
 
 void draw()
 {
-  if (isRunning)
+  if (stateOfGame == 0)
   {
-    background(0); 
-    image(a, x, 0, 500, 500);
-    image(b, x2, 0, 500, 500);
-    x-=1;
-    x2-=1;
-
-    if (x<-width)
-    {
-      x=width;
-    }
-
-    if (x2<-width)
-    {
-      x2=width;
-    }
-
-    rect(XPos1, YPos1, 55, 55);
-    XPos1 += -speed;
-    if (XPos1 < 0)
-    {
-      XPos1 = width;
-      speed += 1;
-    }
-    updateDude();
-    CheckCollisions();
-  } else
-  {
-    background(0);
-    textSize(32);
-    textAlign(CENTER);
-    text("Game Over", 250, 250);
+    background(255);
+    fill(255);
+    rect(buttonX, buttonY, buttonW, buttonH);
+    fill(0);
+    text("START", buttonX+10, buttonY+buttonH-10);
   }
-} 
+  if (stateOfGame == 1)
+  {  
+    if (isRunning)
+    {
+      background(0); 
+      image(a, x, 0, 500, 500);
+      image(b, x2, 0, 500, 500);
+      x-=1;
+      x2-=1;
+
+      if (x<-width)
+      {
+        x=width;
+      }
+
+      if (x2<-width)
+      {
+        x2=width;
+      }
+
+      rect(XPos1, YPos1, 55, 55);
+      XPos1 += -speed;
+      if (XPos1 < 0)
+      {
+        XPos1 = width;
+        speed += 1;
+      }
+      updateDude();
+      CheckCollisions();
+    } 
+    else
+    {
+      background(0);
+      textSize(32);
+      textAlign(CENTER);
+      fill(255);
+      text("Game Over", 250, 250);
+    }
+  }
+}
+
+
+void mousePressed() 
+{
+  if (mouseX > buttonX && mouseX < buttonX+buttonW && mouseY > buttonY && mouseY < buttonY+buttonH)
+  {
+    buttonPressed = true; 
+    stateOfGame=1;
+  }
+}
+
 
 void updateDude()
 {

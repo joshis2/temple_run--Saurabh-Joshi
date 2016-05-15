@@ -1,3 +1,4 @@
+
 class Sprite
 {
   int _x;
