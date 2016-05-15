@@ -1,8 +1,10 @@
-// to move the image back you must make the x point of image 1 to be no less than the negative value of the width of image one. ie at -501 must comeback cannot be greater than -500. 
+import processing.sound.*;
+SoundFile file;
 
 Sprite Dude;
-int stateOfGame;
 
+
+int stateOfGame;
 boolean isRunning = true;
 boolean buttonPressed;
 int buttonX, buttonY, buttonW, buttonH;
@@ -15,16 +17,14 @@ float y2;
 PVector position;
 PVector velocity;
 float jumpSpeed;
-
-
 float up;
 float down;
 float gravity = .5;
 float ground = 400;
-
 float XPos1 = 450;
 float YPos1 = 450;
 float speed = 3;
+
 
 void setup()
 {
@@ -41,11 +41,15 @@ void setup()
   Dude.position = new PVector(200, ground);
   Dude.velocity = new PVector(0, 0);
   Dude.jumpSpeed = 15;
+
   a = loadImage("road1.jpg"); 
   b = loadImage("road1.jpg");
   x=0;
   x2=width;
-  
+
+  file = new SoundFile(this, "Hall Of Fame.mp3");
+  file.play();
+
   reset();
 }
 
@@ -64,6 +68,7 @@ void reset()
   Dude.position = new PVector(200, ground);
   Dude.velocity = new PVector(0, 0);
   Dude.jumpSpeed = 15;
+
   a = loadImage("road1.jpg"); 
   b = loadImage("road1.jpg");
   x=0;
@@ -110,12 +115,13 @@ void draw()
       updateDude();
       CheckCollisions();
     } 
-    else
+      else
     {
       background(0);
       textSize(32);
       textAlign(CENTER);
       fill(255);
+      file.stop();
       text("Game Over", 250, 250);
     }
   }
@@ -128,10 +134,12 @@ void mousePressed()
   {
     buttonPressed = true; 
     stateOfGame=1;
-  }
-  else
+  } 
+    else
   {
     reset();
+    buttonPressed = true;
+    stateOfGame=1;
   }
 }
 
