@@ -45,8 +45,30 @@ void setup()
   b = loadImage("road1.jpg");
   x=0;
   x2=width;
+  
+  reset();
 }
 
+
+void reset()
+{
+  buttonPressed = false;
+  buttonW = 335;
+  buttonH = 100;
+  textSize(buttonH);
+  buttonX = (width-buttonW)/2;
+  buttonY = (height-buttonH)/2;
+
+  Dude = new Sprite();
+  Dude.SetImage("guy_dangerous.jpg", 100, 100);
+  Dude.position = new PVector(200, ground);
+  Dude.velocity = new PVector(0, 0);
+  Dude.jumpSpeed = 15;
+  a = loadImage("road1.jpg"); 
+  b = loadImage("road1.jpg");
+  x=0;
+  x2=width;
+}
 
 void draw()
 {
@@ -106,6 +128,10 @@ void mousePressed()
   {
     buttonPressed = true; 
     stateOfGame=1;
+  }
+  else
+  {
+    reset();
   }
 }
 
