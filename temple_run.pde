@@ -49,30 +49,6 @@ void setup()
 
   file = new SoundFile(this, "Hall Of Fame.mp3");
   file.play();
-
-  reset();
-}
-
-
-void reset()
-{
-  buttonPressed = false;
-  buttonW = 335;
-  buttonH = 100;
-  textSize(buttonH);
-  buttonX = (width-buttonW)/2;
-  buttonY = (height-buttonH)/2;
-
-  Dude = new Sprite();
-  Dude.SetImage("guy_dangerous.jpg", 100, 100);
-  Dude.position = new PVector(200, ground);
-  Dude.velocity = new PVector(0, 0);
-  Dude.jumpSpeed = 15;
-
-  a = loadImage("road1.jpg"); 
-  b = loadImage("road1.jpg");
-  x=0;
-  x2=width;
 }
 
 void draw()
@@ -115,7 +91,7 @@ void draw()
       updateDude();
       CheckCollisions();
     } 
-      else
+    if (stateOfGame == 2)
     {
       background(0);
       textSize(32);
@@ -131,15 +107,19 @@ void draw()
 void mousePressed() 
 {
   if (mouseX > buttonX && mouseX < buttonX+buttonW && mouseY > buttonY && mouseY < buttonY+buttonH)
-  {
-    buttonPressed = true; 
+  {  
+    buttonPressed = true;                                                                
     stateOfGame=1;
+    isRunning = true;
   } 
-    else
+
+  if (stateOfGame == 2)   
   {
-    reset();
-    buttonPressed = true;
-    stateOfGame=1;
+    if (mousePressed == true)
+    { 
+      stateOfGame = 0;
+      XPos1 = width;
+    }
   }
 }
 
@@ -210,5 +190,6 @@ void CheckCollisions()
     Dude.position.y + 100 > YPos1)
   {
     isRunning=false;
+    stateOfGame = 2;
   }
 }
