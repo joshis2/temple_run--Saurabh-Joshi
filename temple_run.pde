@@ -46,9 +46,11 @@ void setup()
   b = loadImage("road1.jpg");
   x=0;
   x2=width;
-
+  if (stateOfGame == 0)
+  {
   file = new SoundFile(this, "Hall Of Fame.mp3");
   file.play();
+  }
 }
 
 void draw()
@@ -98,7 +100,7 @@ void draw()
       textAlign(CENTER);
       fill(255);
       file.stop();
-      text("Game Over", 250, 250);
+      text("Game Over! Click to Restart!", 250, 250);
     }
   }
 }
@@ -119,6 +121,8 @@ void mousePressed()
     { 
       stateOfGame = 0;
       XPos1 = width;
+      text("START", buttonX+10, buttonY+buttonH-10);
+      file.play();
     }
   }
 }
