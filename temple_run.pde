@@ -61,6 +61,8 @@ void draw()
     fill(255);
     rect(buttonX, buttonY, buttonW, buttonH);
     fill(0);
+    textSize(buttonH);
+    textAlign(LEFT);
     text("START", buttonX+10, buttonY+buttonH-10);
   }
   if (stateOfGame == 1)
@@ -121,7 +123,6 @@ void mousePressed()
     { 
       stateOfGame = 0;
       XPos1 = width;
-      text("START", buttonX+10, buttonY+buttonH-10);
       file.play();
     }
   }
